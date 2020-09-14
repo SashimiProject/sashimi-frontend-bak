@@ -1,15 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import Footer from '../Footer'
-import TopBar from '../TopBar'
-
 const Page: React.FC = ({ children }) => (
   <StyledPage>
     <StyledMain>
       {children}
     </StyledMain>
-    <Footer />
   </StyledPage>
 )
 
@@ -19,7 +15,7 @@ const StyledMain = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh - ${props => props.theme.topBarSize * 2}px);
+  min-height: calc(100vh - 208px);
 `
 
 export default Page

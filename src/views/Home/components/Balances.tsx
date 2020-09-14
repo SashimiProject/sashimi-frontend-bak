@@ -99,8 +99,6 @@ const Balances: React.FC = () => {
         <CardContent>
           <StyledBalances>
             <StyledBalance>
-              <YamIcon />
-              <Spacer />
               <div style={{ flex: 1 }}>
                 <Label text="Your SASHIMI Balance" />
                 <Value
@@ -109,13 +107,13 @@ const Balances: React.FC = () => {
               </div>
             </StyledBalance>
           </StyledBalances>
+          <Footnote>
+            Pending harvest
+            <FootnoteValue>
+              <PendingRewards /> SASHIMI
+            </FootnoteValue>
+          </Footnote>
         </CardContent>
-        <Footnote>
-          Pending harvest
-          <FootnoteValue>
-            <PendingRewards /> SASHIMI
-          </FootnoteValue>
-        </Footnote>
       </Card>
       <Spacer />
 
@@ -125,12 +123,11 @@ const Balances: React.FC = () => {
           <Value
             value={totalSupply ? getBalanceNumber(totalSupply) : 'Locked'}
           />
+          <Footnote>
+            New rewards per block
+            <FootnoteValue>1,000 SASHIMI</FootnoteValue>
+          </Footnote>
         </CardContent>
-        <Footnote>
-          New rewards per block
-          {/*<FootnoteValue>1,000 SUSHI</FootnoteValue>*/}
-          <FootnoteValue>1,000 SASHIMI</FootnoteValue>
-        </Footnote>
       </Card>
     </StyledWrapper>
   )
@@ -138,7 +135,7 @@ const Balances: React.FC = () => {
 
 const Footnote = styled.div`
   font-size: 14px;
-  padding: 8px 20px;
+  padding: 12px 0 0 0;
   color: ${(props) => props.theme.color.grey[400]};
   border-top: solid 1px ${(props) => props.theme.color.grey[300]};
 `

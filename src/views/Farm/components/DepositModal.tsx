@@ -1,8 +1,9 @@
 import React, { useCallback, useMemo, useState } from 'react'
+import {
+  Button
+} from 'antd';
 
 import BigNumber from 'bignumber.js'
-
-import Button from '../../../components/Button'
 import Modal, { ModalProps } from '../../../components/Modal'
 import ModalActions from '../../../components/ModalActions'
 import ModalTitle from '../../../components/ModalTitle'
@@ -51,17 +52,27 @@ const DepositModal: React.FC<DepositModalProps> = ({
         symbol={tokenName}
       />
       <ModalActions>
-        <Button text="Cancel" variant="secondary" onClick={onDismiss} />
+        <Button
+          onClick={onDismiss}
+          size="large"
+          block
+        >
+          Cancel
+        </Button>
         <Button
           disabled={pendingTx}
-          text={pendingTx ? 'Pending Confirmation' : 'Confirm'}
+          type="primary"
+          size="large"
+          block
           onClick={async () => {
             setPendingTx(true)
             await onConfirm(val)
             setPendingTx(false)
             onDismiss()
           }}
-        />
+        >
+          {pendingTx ? 'Pending Confirmation' : 'Confirm'}
+        </Button>
       </ModalActions>
     </Modal>
   )

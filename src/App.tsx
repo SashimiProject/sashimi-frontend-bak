@@ -3,12 +3,13 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import {
   Layout
 } from 'antd';
-import { ThemeProvider } from 'styled-components'
+import styled, { ThemeProvider } from 'styled-components'
 import { UseWalletProvider } from 'use-wallet'
 
 import DisclaimerModal from './components/DisclaimerModal'
 import MobileMenu from './components/MobileMenu'
 import TopBar from './components/TopBar'
+import SashimiFooter from './components/Footer';
 
 import FarmsProvider from './contexts/Farms'
 import ModalsProvider from './contexts/Modals'
@@ -47,10 +48,10 @@ const App: React.FC = () => {
     <Providers>
       <Router>
         <Layout>
-          <Header>
+          <StyledHeader>
             <TopBar onPresentMobileMenu={handlePresentMobileMenu} />
-          </Header>
-          <Content>
+          </StyledHeader>
+          <StyledContent>
             <MobileMenu onDismiss={handleDismissMobileMenu} visible={mobileMenu} />
             <Switch>
               <Route path="/" exact>
@@ -63,8 +64,9 @@ const App: React.FC = () => {
                 <FAQ />
               </Route>
             </Switch>
-          </Content>
+          </StyledContent>
           <Footer>
+            <SashimiFooter />
             <Disclaimer />
           </Footer>
         </Layout>
@@ -120,5 +122,17 @@ const Disclaimer: React.FC = () => {
 
   return <div />
 }
+
+const StyledContent = styled(Content)`
+  min-width: 1200px;
+  padding: 0 64px;
+  margin: 0 auto;
+  margin-top: 24px;
+  background-color: #ffffff;
+`
+
+const StyledHeader = styled(Header)`
+  background-color: #ffffff;
+`
 
 export default App

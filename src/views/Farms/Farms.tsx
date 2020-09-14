@@ -1,10 +1,12 @@
 import React from 'react'
 import { Route, Switch, useRouteMatch } from 'react-router-dom'
+import {
+  Button
+} from 'antd';
 import { useWallet } from 'use-wallet'
 
 import chef from '../../assets/img/chef.png'
 
-import Button from '../../components/Button'
 import Page from '../../components/Page'
 import PageHeader from '../../components/PageHeader'
 import WalletProviderModal from '../../components/WalletProviderModal'
@@ -14,6 +16,7 @@ import useModal from '../../hooks/useModal'
 import Farm from '../Farm'
 
 import FarmCards from './components/FarmCards'
+import styled from "styled-components";
 
 const Farms: React.FC = () => {
   const { path } = useRouteMatch()
@@ -37,23 +40,27 @@ const Farms: React.FC = () => {
             </Route>
           </>
         ) : (
-          <div
-            style={{
-              alignItems: 'center',
-              display: 'flex',
-              flex: 1,
-              justifyContent: 'center',
-            }}
-          >
+          <StyledDiv>
             <Button
               onClick={onPresentWalletProviderModal}
-              text="🔓 Unlock Wallet"
-            />
-          </div>
+              type="primary"
+              size="large"
+
+            >
+              🔓 Unlock Wallet
+            </Button>
+          </StyledDiv>
         )}
       </Page>
     </Switch>
   )
 }
+
+const StyledDiv = styled.div`
+  display: flex;
+  align-items: center;
+  flex: 1;
+  justify-content: center;
+`
 
 export default Farms

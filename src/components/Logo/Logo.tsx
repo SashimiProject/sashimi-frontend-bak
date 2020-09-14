@@ -3,19 +3,29 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 import chef from '../../assets/img/chef.png'
+import exp from "constants";
+
+export const LogoImg = () => (
+  <StyledLogo src={chef} />
+)
 
 const Logo: React.FC = () => {
   return (
-    <StyledLogo to="/">
-      <img src={chef} height="32" style={{ marginTop: -4 }} />
+    <StyledLink to="/">
+      <LogoImg />
       <StyledText>
           SashimiSwap<MasterChefText>MasterChef</MasterChefText>
       </StyledText>
-    </StyledLogo>
+    </StyledLink>
   )
 }
 
-const StyledLogo = styled(Link)`
+const StyledLogo = styled.img`
+  height: 32px;
+  margin-top: -4
+`
+
+const StyledLink = styled(Link)`
   align-items: center;
   display: flex;
   justify-content: center;
