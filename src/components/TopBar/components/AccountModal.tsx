@@ -74,7 +74,6 @@ const AccountModal: React.FC<ModalProps> = ({ onDismiss }) => {
           block
           size="large"
           type="primary"
-          danger
         >Sign out</Button>
       </ModalContent>
       <ModalActions>

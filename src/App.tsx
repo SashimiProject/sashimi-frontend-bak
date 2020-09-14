@@ -126,8 +126,7 @@ const Disclaimer: React.FC = () => {
 const StyledContent = styled(Content)`
   min-width: 1200px;
   padding: 0 64px;
-  margin: 0 auto;
-  margin-top: 24px;
+  margin: 24px auto;
   background-color: #ffffff;
 `
 
