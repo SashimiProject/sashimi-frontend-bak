@@ -1,11 +1,12 @@
 import React, { useCallback } from 'react'
 import styled from 'styled-components'
+import {
+  Button
+} from 'antd';
 
 import { useWallet } from 'use-wallet'
 
 import useModal from '../../../hooks/useModal'
-
-import Button from '../../Button'
 import WalletProviderModal from '../../WalletProviderModal'
 
 import AccountModal from './AccountModal'
@@ -16,7 +17,7 @@ const AccountButton: React.FC<AccountButtonProps> = (props) => {
 
   const [onPresentAccountModal] = useModal(<AccountModal />)
   const [onPresentWalletProviderModal] = useModal(<WalletProviderModal />, 'provider')
-  
+
   const { account } = useWallet()
 
   const handleUnlockClick = useCallback(() => {
@@ -28,15 +29,17 @@ const AccountButton: React.FC<AccountButtonProps> = (props) => {
       {!account ? (
         <Button
           onClick={handleUnlockClick}
-          size="sm"
-          text="Unlock Wallet"
-        />
+          type="primary"
+        >
+          Unlock Wallet
+        </Button>
       ) : (
         <Button
           onClick={onPresentAccountModal}
-          size="sm"
-          text="My Wallet"
-        />
+          type="primary"
+        >
+          My Wallet
+        </Button>
       )}
     </StyledAccountButton>
   )

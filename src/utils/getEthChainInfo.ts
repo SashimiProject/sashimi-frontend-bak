@@ -1,16 +1,24 @@
-export const getEthChainInfo = () => {
-    let chainId: number = 42;
-    let rpcUrl: string = 'https://kovan.infura.io/';
-    let ethscanType: string = 'kovan.';
-    const href = window.location.href;
-    if (/\/\/[sushi|sashimi|]+.aelf.io|\/\/sashimi.cool/.test(href)) {
-        chainId = 1;
-        rpcUrl = 'https://mainnet.eth.aragon.network/';
-        ethscanType = '';
+const CHAIN_ENV: string = process.env.REACT_APP_CHAIN_ENV || 'main';
+
+interface CHAIN_INFO {
+    chainId: number,
+    rpcUrl: string,
+    ethscanType: string
+}
+
+const CHAIN_ENV_MAP: any = {
+    main: {
+        chainId: 1,
+        rpcUrl: 'https://mainnet.eth.aragon.network/',
+        ethscanType: ''
+    },
+    kovan: {
+        chainId: 42,
+        rpcUrl: 'https://kovan.infura.io/',
+        ethscanType: 'kovan.'
     }
-    return {
-        chainId,
-        rpcUrl,
-        ethscanType
-    }
+};
+
+export function getEthChainInfo(): CHAIN_INFO {
+    return CHAIN_ENV_MAP[CHAIN_ENV];
 };

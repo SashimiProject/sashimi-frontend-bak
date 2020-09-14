@@ -1,7 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
+import {
+  Button
+} from 'antd';
 
-import Button from '../Button'
 import Input, { InputProps } from '../Input'
 
 interface TokenInputProps extends InputProps {
@@ -26,7 +28,7 @@ const TokenInput: React.FC<TokenInputProps> = ({
             <StyledTokenSymbol>{symbol}</StyledTokenSymbol>
             <StyledSpacer />
             <div>
-              <Button size="sm" text="Max" onClick={onSelectMax} />
+              <Button onClick={onSelectMax}>Max</Button>
             </div>
           </StyledTokenAdornmentWrapper>
         )}
@@ -37,12 +39,6 @@ const TokenInput: React.FC<TokenInputProps> = ({
     </StyledTokenInput>
   )
 }
-
-/*
-            <div>
-              <Button size="sm" text="Max" />
-            </div>
-*/
 
 const StyledTokenInput = styled.div`
 

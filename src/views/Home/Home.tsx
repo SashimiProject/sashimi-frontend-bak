@@ -1,9 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
+import {
+  Button
+} from 'antd';
+import {
+  Link
+} from 'react-router-dom';
 
 import chef from '../../assets/img/chef.png'
-
-import Button from '../../components/Button'
 import Container from '../../components/Container'
 import Page from '../../components/Page'
 import PageHeader from '../../components/PageHeader'
@@ -19,21 +23,24 @@ const Home: React.FC = () => {
         title="MasterChef is Ready"
         subtitle="Stake Uniswap LP tokens to claim your very own yummy SASHIMI!"
       />
-
       <Container>
         <Balances />
       </Container>
       <Spacer size="lg" />
-      <div
-        style={{
-          margin: '0 auto',
-        }}
-      >
-        <Button text="🔪 See the Menu" to="/farms" variant="secondary" />
-      </div>
+      <Center>
+        <Button size="large" type="primary">
+          <Link to="/farms">
+            See the Menu
+          </Link>
+        </Button>
+      </Center>
     </Page>
   )
 }
+
+const Center = styled.div`
+  margin: 0 auto;
+`;
 
 const StyledInfo = styled.h3`
   color: ${(props) => props.theme.color.grey[500]};

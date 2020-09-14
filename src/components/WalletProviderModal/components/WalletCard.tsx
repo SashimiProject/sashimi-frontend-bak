@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-
-import Button from '../../Button'
+import {
+  Button
+} from 'antd';
 import Card from '../../Card'
 import CardContent from '../../CardContent'
 import CardIcon from '../../CardIcon'
@@ -22,7 +23,14 @@ const WalletCard: React.FC<WalletCardProps> = ({ icon, onConnect, title }) => (
       </CardIcon>
       <CardTitle text={title} />
       <Spacer />
-      <Button onClick={onConnect} text="Connect" />
+      <Button
+        onClick={onConnect}
+        type="primary"
+        size="large"
+        block
+      >
+        Connect
+      </Button>
     </CardContent>
   </Card>
 )

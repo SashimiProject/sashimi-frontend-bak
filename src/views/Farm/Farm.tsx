@@ -5,7 +5,6 @@ import { useParams } from 'react-router-dom'
 import { useWallet } from 'use-wallet'
 import { provider } from 'web3-core'
 
-import Button from '../../components/Button'
 import PageHeader from '../../components/PageHeader'
 import Spacer from '../../components/Spacer'
 

@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
+import {
+  Button
+} from 'antd';
 import { useWallet } from 'use-wallet'
 
 import metamaskLogo from '../../assets/img/metamask-fox.svg'
 import walletConnectLogo from '../../assets/img/wallet-connect.svg'
-
-import Button from '../Button'
 import Modal, { ModalProps } from '../Modal'
 import ModalActions from '../ModalActions'
 import ModalContent from '../ModalContent'
@@ -48,7 +49,7 @@ const WalletProviderModal: React.FC<ModalProps> = ({ onDismiss }) => {
       </ModalContent>
 
       <ModalActions>
-        <Button text="Cancel" variant="secondary" onClick={onDismiss} />
+        <Button size="large" block onClick={onDismiss} >Cancel</Button>
       </ModalActions>
     </Modal>
   )

@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import {
+  Button
+} from 'antd';
 
 import { Contract } from 'web3-eth-contract'
-
-import Button from '../../../components/Button'
 import Card from '../../../components/Card'
 import CardContent from '../../../components/CardContent'
 import CardIcon from '../../../components/CardIcon'
@@ -17,6 +18,8 @@ import {
   getDisplayBalance,
   getBalanceNumber,
 } from '../../../utils/formatBalance'
+import Logo from "../../../components/Logo";
+import {LogoImg} from "../../../components/Logo/Logo";
 
 interface HarvestProps {
   pid: number
@@ -32,20 +35,26 @@ const Harvest: React.FC<HarvestProps> = ({ pid }) => {
       <CardContent>
         <StyledCardContentInner>
           <StyledCardHeader>
-            <CardIcon>🍣</CardIcon>
+            <CardIcon>
+              <LogoImg />
+            </CardIcon>
             <Value value={getBalanceNumber(earnings)} />
             <Label text="SASHIMI Earned" />
           </StyledCardHeader>
           <StyledCardActions>
             <Button
               disabled={!earnings.toNumber() || pendingTx}
-              text={pendingTx ? 'Collecting SASHIMI' : 'Harvest'}
+              type="primary"
+              size="large"
+              block
               onClick={async () => {
                 setPendingTx(true)
                 await onReward()
                 setPendingTx(false)
               }}
-            />
+            >
+              {pendingTx ? 'Collecting SASHIMI' : 'Harvest'}
+            </Button>
           </StyledCardActions>
         </StyledCardContentInner>
       </CardContent>

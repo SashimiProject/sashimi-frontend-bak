@@ -30,6 +30,7 @@ const StyledResponsiveWrapper = styled.div`
   position: relative;
   width: 100%;
   max-width: 512px;
+  z-index: 999;
   @media (max-width: ${(props) => props.theme.breakpoints.mobile}px) {
     flex: 1;
     position: absolute;
@@ -43,7 +44,7 @@ const StyledResponsiveWrapper = styled.div`
 
 const StyledModal = styled.div`
   padding: 0 20px;
-  background: ${(props) => props.theme.color.grey[200]};
+  background-color: #ffffff;
   border: 1px solid ${(props) => props.theme.color.grey[300]}ff;
   border-radius: 12px;
   box-shadow: inset 1px 1px 0px ${(props) => props.theme.color.grey[100]};
@@ -52,6 +53,7 @@ const StyledModal = styled.div`
   position: relative;
   width: 100%;
   min-height: 0;
+  z-index: 999;
 `
 
 const StyledModalContent = styled.div``

@@ -1,10 +1,19 @@
-import React, { useCallback, useEffect, useState } from 'react'
-import styled, { keyframes } from 'styled-components'
-import Countdown, { CountdownRenderProps } from 'react-countdown'
-import { useWallet } from 'use-wallet'
+import React, {useCallback, useEffect, useState} from 'react'
+import {
+  Button,
+  Divider,
+  Row,
+  Col
+} from 'antd';
+import {
+  Link
+} from 'react-router-dom';
+import styled, {keyframes} from 'styled-components'
+import Countdown, {CountdownRenderProps} from 'react-countdown'
+import {useWallet} from 'use-wallet'
 import numeral from 'numeral'
 
-import Button from '../../../components/Button'
+
 import Card from '../../../components/Card'
 import CardContent from '../../../components/CardContent'
 import CardIcon from '../../../components/CardIcon'
@@ -15,10 +24,10 @@ import useFarms from '../../../hooks/useFarms'
 import useYam from '../../../hooks/useYam'
 import BigNumber from 'bignumber.js'
 
-import { Farm } from '../../../contexts/Farms'
+import {Farm} from '../../../contexts/Farms'
 
-import { bnToDec } from '../../../utils'
-import { getEarned, getMasterChefContract } from '../../../sushi/utils'
+import {bnToDec} from '../../../utils'
+import {getEarned, getMasterChefContract} from '../../../sushi/utils'
 import useAllStakedValue, {
   StakedValue,
 } from '../../../hooks/useAllStakedValue'
@@ -31,11 +40,11 @@ interface FarmWithStakedValue extends Farm, StakedValue {
 
 const FarmCards: React.FC = () => {
   const [farms] = useFarms()
-  const { account } = useWallet()
+  const {account} = useWallet()
   const stakedValue = useAllStakedValue()
 
   const sushiIndex = farms.findIndex(
-    ({ tokenSymbol }) => tokenSymbol === BASIC_TOKEN,
+    ({tokenSymbol}) => tokenSymbol === BASIC_TOKEN,
   )
 
   const sushiPrice =
@@ -62,12 +71,12 @@ const FarmCards: React.FC = () => {
         ...farm,
         ...stakedValue[i],
         apy: stakedValue[i]
-            ? sushiPrice
-                .times(SASHIMI_PER_BLOCK)
-                .times(BLOCKS_PER_YEAR)
-                .times(stakedValue[i].poolWeight)
-                .div(stakedValue[i].totalWethValue)
-            : null,
+          ? sushiPrice
+            .times(SASHIMI_PER_BLOCK)
+            .times(BLOCKS_PER_YEAR)
+            .times(stakedValue[i].poolWeight)
+            .div(stakedValue[i].totalWethValue)
+          : null,
       }
 
       if (stakedValue[i] && farm.pid === 10 && stakedValue[i].totalWethValue.toNumber() === 0) {
@@ -77,12 +86,12 @@ const FarmCards: React.FC = () => {
           ...farm,
           ...stakedValue[i],
           apy: stakedValue[i]
-              ? sushiPrice
-                  .times(SASHIMI_PER_BLOCK)
-                  .times(BLOCKS_PER_YEAR)
-                  .times(stakedValue[i].poolWeight)
-                  .div(sashimiElfWethValue)
-              : null,
+            ? sushiPrice
+              .times(SASHIMI_PER_BLOCK)
+              .times(BLOCKS_PER_YEAR)
+              .times(stakedValue[i].poolWeight)
+              .div(sashimiElfWethValue)
+            : null,
         }
       }
 
@@ -105,15 +114,15 @@ const FarmCards: React.FC = () => {
           <StyledRow key={i}>
             {farmRow.map((farm, j) => (
               <React.Fragment key={j}>
-                <FarmCard farm={farm} />
-                {(j === 0 || j === 1) && <StyledSpacer />}
+                <FarmCard farm={farm}/>
+                {(j === 0 || j === 1) && <StyledSpacer/>}
               </React.Fragment>
             ))}
           </StyledRow>
         ))
       ) : (
         <StyledLoadingWrapper>
-          <Loader text="Cooking the rice ..." />
+          <Loader text="Cooking the rice ..."/>
         </StyledLoadingWrapper>
       )}
     </StyledCards>
@@ -124,21 +133,21 @@ interface FarmCardProps {
   farm: FarmWithStakedValue
 }
 
-const FarmCard: React.FC<FarmCardProps> = ({ farm }) => {
+const FarmCard: React.FC<FarmCardProps> = ({farm}) => {
   const [startTime, setStartTime] = useState(0)
   const [harvestable, setHarvestable] = useState(0)
 
-  const { account } = useWallet()
-  const { lpTokenAddress } = farm
+  const {account} = useWallet()
+  const {lpTokenAddress} = farm
   const yam = useYam()
 
   const renderer = (countdownProps: CountdownRenderProps) => {
-    const { hours, minutes, seconds } = countdownProps
+    const {hours, minutes, seconds} = countdownProps
     const paddedSeconds = seconds < 10 ? `0${seconds}` : seconds
     const paddedMinutes = minutes < 10 ? `0${minutes}` : minutes
     const paddedHours = hours < 10 ? `0${hours}` : hours
     return (
-      <span style={{ width: '100%' }}>
+      <span style={{width: '100%'}}>
         {paddedHours}:{paddedMinutes}:{paddedSeconds}
       </span>
     )
@@ -154,6 +163,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm }) => {
       )
       setHarvestable(bnToDec(earned))
     }
+
     if (yam && account) {
       fetchEarned()
     }
@@ -161,22 +171,22 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm }) => {
 
   const poolActive = true // startTime * 1000 - Date.now() <= 0
 
-  let farmApy:any;
+  let farmApy: any;
   if (farm.apy && farm.apy.isNaN()) {
     farmApy = '- %';
   } else {
     farmApy = farm.apy
-        ? `${farm.apy
-            .times(new BigNumber(100))
-            .toNumber()
-            .toLocaleString('en-US')
-            .slice(0, -1) || '-' }%`
-        : 'Loading ...';
+      ? `${farm.apy
+        .times(new BigNumber(100))
+        .toNumber()
+        .toLocaleString('en-US')
+        .slice(0, -1) || '-'}%`
+      : 'Loading ...';
   }
 
   return (
     <StyledCardWrapper>
-      {farm.tokenSymbol === 'SASHIMI' && <StyledCardAccent />}
+      {farm.tokenSymbol === 'SASHIMI' && <StyledCardAccent/>}
       <Card>
         <CardContent>
           <StyledContent>
@@ -186,27 +196,40 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm }) => {
               <StyledDetail>Deposit {farm.lpToken.toUpperCase()}</StyledDetail>
               <StyledDetail>Earn {farm.earnToken.toUpperCase()} ({farm.pool} Pool)</StyledDetail>
             </StyledDetails>
-            <Spacer />
+            <Spacer/>
             <ButtonContainer>
-              <Button
+              <Col span={11}>
+                <Button
+                  size="large"
+                  type="primary"
                   disabled={!poolActive}
-                  text={poolActive ? 'Select' : undefined}
-                  to={`/farms/${farm.id}`}
-              >
-                {!poolActive && (
-                    <Countdown
-                        date={new Date(startTime * 1000)}
-                        renderer={renderer}
-                    />
-                )}
-              </Button>
-              &nbsp;&nbsp;&nbsp;
-              <Button
-                  text="GET LP"
+                  block
+                >
+                  <Link to={`/farms/${farm.id}`}>
+                    {
+                      poolActive ? 'Select' : (
+                        <Countdown
+                          date={new Date(startTime * 1000)}
+                          renderer={renderer}
+                        />
+                      )
+                    }
+                  </Link>
+                </Button>
+              </Col>
+              <Col span={11} offset={2}>
+                <Button
+                  size="large"
+                  type="primary"
                   href={farm.uniswapLPUrl}
-              >
-              </Button>
+                  target="_blank"
+                  block
+                >
+                  🦄 GET LP
+                </Button>
+              </Col>
             </ButtonContainer>
+            <StyledDivider />
             <StyledInsight>
               <span>APY</span>
               <span>
@@ -255,9 +278,7 @@ const ValueETH = styled.div`
   padding-bottom: ${(props) => props.theme.spacing[6]}px;
 `
 
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
+const ButtonContainer = styled(Row)`
   width: 100%;
 `
 
@@ -285,7 +306,7 @@ const StyledCardAccent = styled.div`
   right: -2px;
   bottom: -2px;
   left: -2px;
-  z-index: -1;
+  z-index: 0;
 `
 
 const StyledCards = styled.div`
@@ -325,6 +346,8 @@ const StyledTitle = styled.h4`
   font-weight: 700;
   margin: ${(props) => props.theme.spacing[2]}px 0 0;
   padding: 0;
+  display: flex;
+  align-items: center;
 `
 
 const StyledContent = styled.div`
@@ -351,16 +374,17 @@ const StyledInsight = styled.div`
   display: flex;
   justify-content: space-between;
   box-sizing: border-box;
-  border-radius: 8px;
-  background: #fffdfa;
-  color: #aa9584;
+  color: ${(props) => props.theme.color.grey[400]};
   width: 100%;
-  margin-top: 12px;
   line-height: 32px;
-  font-size: 13px;
-  border: 1px solid #e6dcd5;
+  font-size: 14px;
   text-align: center;
   padding: 0 12px;
+`
+
+const StyledDivider = styled(Divider)`
+  margin-top: 12px;
+  margin-bottom:  7px;
 `
 
 export default FarmCards

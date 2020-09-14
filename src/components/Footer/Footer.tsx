@@ -5,23 +5,16 @@ import Nav from './components/Nav'
 
 const Footer: React.FC = () => (
   <StyledFooter>
-    <StyledFooterInner>
-      <Nav />
-    </StyledFooterInner>
+    <Nav />
   </StyledFooter>
 )
 
-const StyledFooter = styled.footer`
-  align-items: center;
-  display: flex;
-  justify-content: center;
-`
-const StyledFooterInner = styled.div`
+const StyledFooter = styled.div`
   align-items: center;
   display: flex;
   justify-content: center;
   height: ${props => props.theme.topBarSize}px;
-  max-width: ${props => props.theme.siteWidth}px;
+  color: #ffffff;
   width: 100%;
 `
 
