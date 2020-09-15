@@ -124,14 +124,21 @@ const Disclaimer: React.FC = () => {
 }
 
 const StyledContent = styled(Content)`
-  min-width: 1200px;
-  padding: 0 64px;
+  padding: 12px 64px;
   margin: 24px auto;
   background-color: #ffffff;
+  min-width: 1200px;
+  @media (max-width: 414px) {
+    padding: 12px 16px;
+    min-width: 100%;
+  }
 `
 
 const StyledHeader = styled(Header)`
   background-color: #ffffff;
+  @media (max-width: 414px) {
+    padding: 0;
+  }
 `
 
 export default App
