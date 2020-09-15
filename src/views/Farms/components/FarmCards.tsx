@@ -36,7 +36,9 @@ import {BASIC_TOKEN} from '../../../constants/config';
 import uni from '../../../assets/img/logo_uniswap.png';
 
 interface FarmWithStakedValue extends Farm, StakedValue {
-  apy: BigNumber
+  apy: BigNumber,
+  allocPoint: BigNumber
+  totalAllocPoint: BigNumber
 }
 
 const UniLogo = () => (
@@ -48,6 +50,8 @@ const StyledLogo = styled.img`
   margin-top: -4px;
   margin-right: 2px;
 `
+
+let burnPoolPercent: BigNumber = new BigNumber(0);
 
 const FarmCards: React.FC = () => {
   const [farms] = useFarms()
@@ -67,14 +71,18 @@ const FarmCards: React.FC = () => {
   // TODO: After block height xxxx, SUSHI_PER_BLOCK = 100;
   const SASHIMI_PER_BLOCK = new BigNumber(1000)
 
-  let ethValueInSashimi = new BigNumber(0);
   let ethValueInSashimiNoWeight = new BigNumber(0);
   const rows = farms.reduce<FarmWithStakedValue[][]>(
     (farmRows, farm, i) => {
+      const newFarmRows = [...farmRows]
+      if (stakedValue[i] && farm.pid === 21 && !stakedValue[i].totalAllocPoint.isEqualTo(0)) {
+        burnPoolPercent = stakedValue[i].allocPoint.div(stakedValue[i].totalAllocPoint);
+        return newFarmRows;
+      }
 
+      const notETHTokenPair = farm.pid >= 10 && farm.pid <= 15;
       // TODO: Better code to get weth value of tokenNotEth-tokenNotEth
-      if (stakedValue[i] && farm.pid !== 10) {
-        ethValueInSashimi = ethValueInSashimi.plus(stakedValue[i].poolWeight.times(stakedValue[i].totalWethValue));
+      if (stakedValue[i] && !notETHTokenPair ) {
         ethValueInSashimiNoWeight = ethValueInSashimiNoWeight.plus(stakedValue[i].totalWethValue);
       }
 
@@ -90,8 +98,8 @@ const FarmCards: React.FC = () => {
           : null,
       }
 
-      if (stakedValue[i] && farm.pid === 10 && stakedValue[i].totalWethValue.toNumber() === 0) {
-        const sashimiElfWethValue = stakedValue[i].tokenAmount.times(sushiPrice).times(new BigNumber(2));
+      if (stakedValue[i] && notETHTokenPair && stakedValue[i].totalWethValue.toNumber() === 0) {
+        const sashimiElfWethValue = stakedValue[i].tokenAmount.times(sushiPrice).times(new BigNumber(2)) || new BigNumber(0);
         ethValueInSashimiNoWeight = ethValueInSashimiNoWeight.plus(sashimiElfWethValue);
         farmWithStakedValue = {
           ...farm,
@@ -106,7 +114,6 @@ const FarmCards: React.FC = () => {
         }
       }
 
-      const newFarmRows = [...farmRows]
       if (newFarmRows[newFarmRows.length - 1].length === 3) {
         newFarmRows.push([farmWithStakedValue])
       } else {
@@ -183,6 +190,7 @@ const FarmCard: React.FC<FarmCardProps> = ({farm}) => {
   const poolActive = true // startTime * 1000 - Date.now() <= 0
 
   let farmApy: any;
+  let farmPool: any;
   if (farm.apy && farm.apy.isNaN()) {
     farmApy = '- %';
   } else {
@@ -193,6 +201,12 @@ const FarmCard: React.FC<FarmCardProps> = ({farm}) => {
         .toLocaleString('en-US')
         .slice(0, -1) || '-'}%`
       : 'Loading ...';
+  }
+  if (farm.allocPoint && farm.totalAllocPoint && !farm.allocPoint.isEqualTo(0) && !farm.totalAllocPoint.isEqualTo(0)) {
+    const calibrationParam: BigNumber = (new BigNumber(1)).minus(burnPoolPercent);
+    farmPool = `${farm.allocPoint.times(100).div(calibrationParam).div(farm.totalAllocPoint).toFixed(2)}%`;
+  } else {
+    farmPool = '- %';
   }
 
   return (
@@ -205,7 +219,7 @@ const FarmCard: React.FC<FarmCardProps> = ({farm}) => {
             <StyledTitle>{farm.name}</StyledTitle>
             <StyledDetails>
               <StyledDetail>Deposit {farm.lpToken.toUpperCase()}</StyledDetail>
-              <StyledDetail>Earn {farm.earnToken.toUpperCase()} ({farm.pool} Pool)</StyledDetail>
+              <StyledDetail>Earn {farm.earnToken.toUpperCase()} ({farmPool} Pool)</StyledDetail>
             </StyledDetails>
             <Spacer/>
             <ButtonContainer>
@@ -232,7 +246,7 @@ const FarmCard: React.FC<FarmCardProps> = ({farm}) => {
                 <Button
                   size="large"
                   type="primary"
-                  href={farm.uniswapLPUrl}
+                  href={`https://uniswap.info/pair/${farm.lpTokenAddress}`}
                   target="_blank"
                   block
                 >

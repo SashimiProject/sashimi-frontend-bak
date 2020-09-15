@@ -12,8 +12,6 @@ export interface Farm {
   icon: React.ReactNode
   id: string
   tokenSymbol: string
-  pool: string,
-  uniswapLPUrl: string
 }
 
 export interface FarmsContext {

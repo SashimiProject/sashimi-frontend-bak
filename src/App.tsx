@@ -132,6 +132,12 @@ const StyledContent = styled(Content)`
   margin: 24px auto;
   background-color: #ffffff;
   min-width: 1200px;
+  @media (max-width: 1200px) {
+    min-width: 968px;
+  }
+  @media (max-width: 968px) {
+    min-width: 90%;
+  }
   @media (max-width: 414px) {
     padding: 12px 0;
     min-width: 100%;

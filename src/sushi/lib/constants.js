@@ -109,8 +109,6 @@ export const supportedPools = [
     symbol: 'SASHIMI-ETH UNI-V2 LP',
     tokenSymbol: 'SASHIMI',
     icon: '🍣',
-    pool: '17.7%',
-    uniswapLPUrl: 'https://uniswap.info/pair/0x4b618087dae7765823bc47ffbf38c8ee8489f5ca',
   },
   {
     pid: 10,
@@ -126,9 +124,163 @@ export const supportedPools = [
     symbol: 'SASHIMI-ELF UNI-V2 LP',
     tokenSymbol: 'SASHIMI',
     icon: '🍱',
-    pool: '17.7%',
-    uniswapLPUrl: 'https://uniswap.info/pair/0x1629b0259e6e5c315b8eea09fd1a4d0a26291f98',
   },
+  // SASHIMI new
+  {
+    pid: 11,
+    lpAddresses: {
+      42: '0xb21f5d46e1756cfeb34496636d38f97dc8552415',
+      1: '0x9aa550c9dbf9649d22d1fd0befb424f0755067c8',
+    },
+    tokenAddresses: {
+      42: '0xf2c73AF42FbAC096FE8F591899C5fc8bCB13884B',
+      1: '0xC28E27870558cF22ADD83540d2126da2e4b464c2',
+    },
+    name: 'GT love Sashimi!',
+    symbol: 'GT-SASHIMI UNI-V2 LP',
+    tokenSymbol: 'SASHIMI',
+    icon: '🍙',
+  },
+  {
+    pid: 12,
+    lpAddresses: {
+      42: '0xb21f5d46e1756cfeb34496636d38f97dc8552415',
+      1: '0xb1961f431ea5fb5c3932590897a0d3f1cf7ed088',
+    },
+    tokenAddresses: {
+      42: '0xf2c73AF42FbAC096FE8F591899C5fc8bCB13884B',
+      1: '0xC28E27870558cF22ADD83540d2126da2e4b464c2',
+    },
+    name: 'LRC love Sashimi!',
+    symbol: 'LRC-SASHIMI UNI-V2 LP',
+    tokenSymbol: 'SASHIMI',
+    icon: '🍘',
+  },
+  {
+    pid: 13,
+    lpAddresses: {
+      42: '0xb21f5d46e1756cfeb34496636d38f97dc8552415',
+      1: '0x2155128c06c4ee4b751c23d9403c07648afa5f5a',
+    },
+    tokenAddresses: {
+      42: '0xf2c73AF42FbAC096FE8F591899C5fc8bCB13884B',
+      1: '0xC28E27870558cF22ADD83540d2126da2e4b464c2',
+    },
+    name: 'KNC love Sashimi!',
+    symbol: 'KNC-SASHIMI UNI-V2 LP',
+    tokenSymbol: 'SASHIMI',
+    icon: '🍥',
+  },
+  {
+    pid: 14,
+    lpAddresses: {
+      42: '0xb21f5d46e1756cfeb34496636d38f97dc8552415',
+      1: '0x8306207b827d4b2b07fe4cfc191f5adced1c47f2',
+    },
+    tokenAddresses: {
+      42: '0xf2c73AF42FbAC096FE8F591899C5fc8bCB13884B',
+      1: '0xC28E27870558cF22ADD83540d2126da2e4b464c2',
+    },
+    name: 'REN love Sashimi!',
+    symbol: 'REN-SASHIMI UNI-V2 LP',
+    tokenSymbol: 'SASHIMI',
+    icon: '🥠',
+  },
+  {
+    pid: 15,
+    lpAddresses: {
+      42: '0xb21f5d46e1756cfeb34496636d38f97dc8552415',
+      1: '0xe839622b4c4bc8b9cda815f2e6a33b7d150ee529',
+    },
+    tokenAddresses: {
+      42: '0xf2c73AF42FbAC096FE8F591899C5fc8bCB13884B',
+      1: '0xC28E27870558cF22ADD83540d2126da2e4b464c2',
+    },
+    name: 'YFII love Sashimi!',
+    symbol: 'YFII-SASHIMI UNI-V2 LP',
+    tokenSymbol: 'SASHIMI',
+    icon: '🦪',
+  },
+  // SASHIMI End
+
+  // New ETH
+  {
+    pid: 16,
+    lpAddresses: {
+      42: '0xb21f5d46e1756cfeb34496636d38f97dc8552415',
+      1: '0x359C138b1666aA2167AaFC205A841FF432A23040',
+    },
+    tokenAddresses: {
+      42: '0xf2c73AF42FbAC096FE8F591899C5fc8bCB13884B',
+      1: '0xe66747a101bff2dba3697199dcce5b743b454759',
+    },
+    name: 'Gate Token',
+    symbol: 'GT-ETH UNI-V2 LP',
+    tokenSymbol: 'GT',
+    icon: '🍝',
+  },
+  {
+    pid: 17,
+    lpAddresses: {
+      42: '0xb21f5d46e1756cfeb34496636d38f97dc8552415',
+      1: '0x8878Df9E1A7c87dcBf6d3999D997f262C05D8C70',
+    },
+    tokenAddresses: {
+      42: '0xf2c73AF42FbAC096FE8F591899C5fc8bCB13884B',
+      1: '0xbbbbca6a901c926f240b89eacb641d8aec7aeafd',
+    },
+    name: 'LRC',
+    symbol: 'LRC-ETH UNI-V2 LP',
+    tokenSymbol: 'LRC',
+    icon: '🍜',
+  },
+  {
+    pid: 18,
+    lpAddresses: {
+      42: '0xb21f5d46e1756cfeb34496636d38f97dc8552415',
+      1: '0xf49C43Ae0fAf37217bDcB00DF478cF793eDd6687',
+    },
+    tokenAddresses: {
+      42: '0xf2c73AF42FbAC096FE8F591899C5fc8bCB13884B',
+      1: '0xdd974d5c2e2928dea5f71b9825b8b646686bd200',
+    },
+    name: 'KNC',
+    symbol: 'KNC-ETH UNI-V2 LP',
+    tokenSymbol: 'KNC',
+    icon: '🍲',
+  },
+  {
+    pid: 19,
+    lpAddresses: {
+      42: '0xb21f5d46e1756cfeb34496636d38f97dc8552415',
+      1: '0x8Bd1661Da98EBDd3BD080F0bE4e6d9bE8cE9858c',
+    },
+    tokenAddresses: {
+      42: '0xf2c73AF42FbAC096FE8F591899C5fc8bCB13884B',
+      1: '0x408e41876cccdc0f92210600ef50372656052a38',
+    },
+    name: 'REN',
+    symbol: 'REN-ETH UNI-V2 LP',
+    tokenSymbol: 'REN',
+    icon: '🍛',
+  },
+  {
+    pid: 20,
+    lpAddresses: {
+      42: '0xb21f5d46e1756cfeb34496636d38f97dc8552415',
+      1: '0x8973Be4402bf0a39448f419c2D64bD3591Dd2299',
+    },
+    tokenAddresses: {
+      42: '0xf2c73AF42FbAC096FE8F591899C5fc8bCB13884B',
+      1: '0xa1d0E215a23d7030842FC67cE582a6aFa3CCaB83',
+    },
+    name: 'YFII',
+    symbol: 'YFII-ETH UNI-V2 LP',
+    tokenSymbol: 'YFII',
+    icon: '🍳',
+  },
+
+  // ETH Start
   {
     pid: 7,
     lpAddresses: {
@@ -143,8 +295,6 @@ export const supportedPools = [
     symbol: 'ELF-ETH UNI-V2 LP',
     tokenSymbol: 'ELF',
     icon: '🧝',
-    pool: '15.4%',
-    uniswapLPUrl: 'https://uniswap.info/pair/0xa6be7f7c6c454b364cda446ea39be9e5e4369de8',
   },
   {
     pid: 8,
@@ -156,12 +306,10 @@ export const supportedPools = [
       42: '0xf2c73AF42FbAC096FE8F591899C5fc8bCB13884B',
       1: '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
     },
-    name: 'BTC Satoshi and his friends！',
+    name: 'BTC Satoshi',
     symbol: 'WBTC-ETH UNI-V2 LP',
     tokenSymbol: 'WBTC',
     icon: '₿',
-    pool: '7.7%',
-    uniswapLPUrl: 'https://uniswap.info/pair/0xbb2b8038a1640196fbe3e38816f3e67cba72d940',
   },
 
   // Others
@@ -179,8 +327,6 @@ export const supportedPools = [
     symbol: 'USDT-ETH UNI-V2 LP',
     tokenSymbol: 'USDT',
     icon: '🐢',
-    pool: '7.7%',
-    uniswapLPUrl: 'https://uniswap.info/pair/0x0d4a11d5eeaac28ec3f61d100daf4d40471f1852',
   },
   {
     pid: 1,
@@ -196,8 +342,6 @@ export const supportedPools = [
     symbol: 'USDC-ETH UNI-V2 LP',
     tokenSymbol: 'USDC',
     icon: '🐌',
-    pool: '8.7%',
-    uniswapLPUrl: 'https://uniswap.info/pair/0xb4e16d0168e52d35cacd2c6185b44281ec28c9dc',
   },
   {
     pid: 2,
@@ -213,8 +357,6 @@ export const supportedPools = [
     symbol: 'DAI-ETH UNI-V2 LP',
     tokenSymbol: 'DAI',
     icon: '🦆',
-    pool: '8.7%',
-    uniswapLPUrl: 'https://uniswap.info/pair/0xa478c2975ab1ea89e8196811f51a7b7ade33eb11',
   },
   {
     pid: 3,
@@ -230,8 +372,6 @@ export const supportedPools = [
     symbol: 'YFI-ETH UNI-V2 LP',
     tokenSymbol: 'YFI',
     icon: '🐋',
-    pool: '4.1%',
-    uniswapLPUrl: 'https://uniswap.info/pair/0x2fdbadf3c4d5a8666bc06645b8358ab803996e28',
   },
   {
     pid: 4,
@@ -247,8 +387,6 @@ export const supportedPools = [
     symbol: 'LEND-ETH UNI-V2 LP',
     tokenSymbol: 'LEND',
     icon: '🐗',
-    pool: '4.1%',
-    uniswapLPUrl: 'https://uniswap.info/pair/0xab3f9bf1d81ddb224a2014e98b238638824bcf20',
   },
   {
     pid: 5,
@@ -264,8 +402,6 @@ export const supportedPools = [
     symbol: 'LINK-ETH UNI-V2 LP',
     tokenSymbol: 'LINK',
     icon: '🐸',
-    pool: '4.1%',
-    uniswapLPUrl: 'https://uniswap.info/pair/0xa2107fa5b38d9bbd2c461d6edf11b11a50f6b974',
   },
   {
     pid: 6,
@@ -281,7 +417,21 @@ export const supportedPools = [
     symbol: 'SNX-ETH UNI-V2 LP',
     tokenSymbol: 'SNX',
     icon: '🐍',
-    pool: '4.1%',
-    uniswapLPUrl: 'https://uniswap.info/pair/0x43ae24960e5534731fc831386c07755a2dc33d47',
+  },
+  // Burn
+  {
+    pid: 21,
+    lpAddresses: {
+      42: '0x0000000000000000000000000000000000000000',
+      1: '0x4b618087DaE7765823BC47fFbF38C8Ee8489F5CA', // 0x00 actual
+    },
+    tokenAddresses: {
+      42: '0x0000000000000000000000000000000000000000',
+      1: '0xC28E27870558cF22ADD83540d2126da2e4b464c2', // 0x00 actual
+    },
+    name: 'Reduce Mint',
+    symbol: 'Nothing',
+    tokenSymbol: 'SASHIMI',
+    icon: '🔥',
   },
 ]
