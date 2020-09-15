@@ -15,7 +15,7 @@ const StyledMain = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh - 208px);
+  min-height: calc(100vh - 256px);
 `
 
 export default Page

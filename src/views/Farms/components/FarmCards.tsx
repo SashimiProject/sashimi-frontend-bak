@@ -33,10 +33,21 @@ import useAllStakedValue, {
 } from '../../../hooks/useAllStakedValue'
 
 import {BASIC_TOKEN} from '../../../constants/config';
+import uni from '../../../assets/img/logo_uniswap.png';
 
 interface FarmWithStakedValue extends Farm, StakedValue {
   apy: BigNumber
 }
+
+const UniLogo = () => (
+  <StyledLogo src={uni} />
+)
+
+const StyledLogo = styled.img`
+  height: 16px;
+  margin-top: -4px;
+  margin-right: 2px;
+`
 
 const FarmCards: React.FC = () => {
   const [farms] = useFarms()
@@ -225,7 +236,7 @@ const FarmCard: React.FC<FarmCardProps> = ({farm}) => {
                   target="_blank"
                   block
                 >
-                  🦄 GET LP
+                  <UniLogo /> GET LP
                 </Button>
               </Col>
             </ButtonContainer>

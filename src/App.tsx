@@ -47,7 +47,7 @@ const App: React.FC = () => {
   return (
     <Providers>
       <Router>
-        <Layout>
+        <StyledLayout>
           <StyledHeader>
             <TopBar onPresentMobileMenu={handlePresentMobileMenu} />
           </StyledHeader>
@@ -65,11 +65,11 @@ const App: React.FC = () => {
               </Route>
             </Switch>
           </StyledContent>
-          <Footer>
+          <StyledFooter>
             <SashimiFooter />
             <Disclaimer />
-          </Footer>
-        </Layout>
+          </StyledFooter>
+        </StyledLayout>
       </Router>
     </Providers>
   )
@@ -123,13 +123,17 @@ const Disclaimer: React.FC = () => {
   return <div />
 }
 
+const StyledLayout = styled(Layout)`
+  position: relative;
+`
+
 const StyledContent = styled(Content)`
   padding: 12px 64px;
   margin: 24px auto;
   background-color: #ffffff;
   min-width: 1200px;
   @media (max-width: 414px) {
-    padding: 12px 16px;
+    padding: 12px 0;
     min-width: 100%;
   }
 `
@@ -139,6 +143,15 @@ const StyledHeader = styled(Header)`
   @media (max-width: 414px) {
     padding: 0;
   }
+`
+
+const StyledFooter = styled(Footer)`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  transform: translateY(104%);
 `
 
 export default App
