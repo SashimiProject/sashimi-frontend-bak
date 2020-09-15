@@ -75,8 +75,11 @@ const FarmCards: React.FC = () => {
   const rows = farms.reduce<FarmWithStakedValue[][]>(
     (farmRows, farm, i) => {
       const newFarmRows = [...farmRows]
-      if (stakedValue[i] && farm.pid === 21 && !stakedValue[i].totalAllocPoint.isEqualTo(0)) {
-        burnPoolPercent = stakedValue[i].allocPoint.div(stakedValue[i].totalAllocPoint);
+      // Do not show burn pool
+      if (farm.pid === 21) {
+        if (stakedValue[i] && !stakedValue[i].totalAllocPoint.isEqualTo(0)) {
+          burnPoolPercent = stakedValue[i].allocPoint.div(stakedValue[i].totalAllocPoint);
+        }
         return newFarmRows;
       }
 
@@ -84,6 +87,12 @@ const FarmCards: React.FC = () => {
       // TODO: Better code to get weth value of tokenNotEth-tokenNotEth
       if (stakedValue[i] && !notETHTokenPair ) {
         ethValueInSashimiNoWeight = ethValueInSashimiNoWeight.plus(stakedValue[i].totalWethValue);
+      }
+
+      let stakedValueCurrentTotalWethValue = stakedValue[i] && stakedValue[i].totalWethValue;
+      if (stakedValue[i] && notETHTokenPair && stakedValue[i].totalWethValue.toNumber() === 0) {
+        stakedValueCurrentTotalWethValue = stakedValue[i].tokenAmount.times(sushiPrice).times(new BigNumber(2)) || new BigNumber(0);
+        ethValueInSashimiNoWeight = ethValueInSashimiNoWeight.plus(stakedValueCurrentTotalWethValue);
       }
 
       let farmWithStakedValue = {
@@ -94,24 +103,8 @@ const FarmCards: React.FC = () => {
             .times(SASHIMI_PER_BLOCK)
             .times(BLOCKS_PER_YEAR)
             .times(stakedValue[i].poolWeight)
-            .div(stakedValue[i].totalWethValue)
+            .div(stakedValueCurrentTotalWethValue)
           : null,
-      }
-
-      if (stakedValue[i] && notETHTokenPair && stakedValue[i].totalWethValue.toNumber() === 0) {
-        const sashimiElfWethValue = stakedValue[i].tokenAmount.times(sushiPrice).times(new BigNumber(2)) || new BigNumber(0);
-        ethValueInSashimiNoWeight = ethValueInSashimiNoWeight.plus(sashimiElfWethValue);
-        farmWithStakedValue = {
-          ...farm,
-          ...stakedValue[i],
-          apy: stakedValue[i]
-            ? sushiPrice
-              .times(SASHIMI_PER_BLOCK)
-              .times(BLOCKS_PER_YEAR)
-              .times(stakedValue[i].poolWeight)
-              .div(sashimiElfWethValue)
-            : null,
-        }
       }
 
       if (newFarmRows[newFarmRows.length - 1].length === 3) {
