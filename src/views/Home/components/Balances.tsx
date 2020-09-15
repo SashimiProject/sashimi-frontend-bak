@@ -125,7 +125,19 @@ const Balances: React.FC = () => {
           />
           <Footnote>
             New rewards per block
-            <FootnoteValue>1,000 SASHIMI</FootnoteValue>
+            <FootnoteValue>500 SASHIMI</FootnoteValue>
+          </Footnote>
+        </CardContent>
+      </Card>
+      <Spacer />
+      <Card>
+        <CardContent>
+          <Label text="Total SASHIMI Supply" />
+          <Value
+            value="100,000,000"
+          />
+          <Footnote>
+            Total Supply of SASHIMI
           </Footnote>
         </CardContent>
       </Card>
@@ -146,11 +158,15 @@ const FootnoteValue = styled.div`
 
 const StyledWrapper = styled.div`
   align-items: center;
+  width: 100%;
   display: flex;
   @media (max-width: 768px) {
     width: 100%;
     flex-flow: column nowrap;
     align-items: stretch;
+  }
+  @media (max-width: 768px) {
+    padding: 0 16px;
   }
 `
 

@@ -23,9 +23,7 @@ const Home: React.FC = () => {
         title="MasterChef is Ready"
         subtitle="Stake Uniswap LP tokens to claim your very own yummy SASHIMI!"
       />
-      <Container>
-        <Balances />
-      </Container>
+      <Balances />
       <Spacer size="lg" />
       <Center>
         <Button size="large" type="primary">
