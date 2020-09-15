@@ -76,14 +76,14 @@ const FarmCards: React.FC = () => {
     (farmRows, farm, i) => {
       const newFarmRows = [...farmRows]
       // Do not show burn pool
-      if (farm.pid === 21) {
+      if (farm.pid === 11) {
         if (stakedValue[i] && !stakedValue[i].totalAllocPoint.isEqualTo(0)) {
           burnPoolPercent = stakedValue[i].allocPoint.div(stakedValue[i].totalAllocPoint);
         }
         return newFarmRows;
       }
 
-      const notETHTokenPair = farm.pid >= 10 && farm.pid <= 15;
+      const notETHTokenPair = [10, 12, 13, 14, 15, 16].includes(farm.pid);
       // TODO: Better code to get weth value of tokenNotEth-tokenNotEth
       if (stakedValue[i] && !notETHTokenPair ) {
         ethValueInSashimiNoWeight = ethValueInSashimiNoWeight.plus(stakedValue[i].totalWethValue);
@@ -195,7 +195,9 @@ const FarmCard: React.FC<FarmCardProps> = ({farm}) => {
         .slice(0, -1) || '-'}%`
       : 'Loading ...';
   }
-  if (farm.allocPoint && farm.totalAllocPoint && !farm.allocPoint.isEqualTo(0) && !farm.totalAllocPoint.isEqualTo(0)) {
+  if (farm.allocPoint && farm.totalAllocPoint
+    && !farm.allocPoint.isEqualTo(0)
+    && !farm.totalAllocPoint.isEqualTo(0) && !burnPoolPercent.isEqualTo(0)) {
     const calibrationParam: BigNumber = (new BigNumber(1)).minus(burnPoolPercent);
     farmPool = `${farm.allocPoint.times(100).div(calibrationParam).div(farm.totalAllocPoint).toFixed(2)}%`;
   } else {

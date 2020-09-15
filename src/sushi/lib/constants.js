@@ -127,7 +127,7 @@ export const supportedPools = [
   },
   // SASHIMI new
   {
-    pid: 11,
+    pid: 12,
     lpAddresses: {
       42: '0xb21f5d46e1756cfeb34496636d38f97dc8552415',
       1: '0x9aa550c9dbf9649d22d1fd0befb424f0755067c8',
@@ -142,7 +142,7 @@ export const supportedPools = [
     icon: '🍙',
   },
   {
-    pid: 12,
+    pid: 13,
     lpAddresses: {
       42: '0xb21f5d46e1756cfeb34496636d38f97dc8552415',
       1: '0xb1961f431ea5fb5c3932590897a0d3f1cf7ed088',
@@ -157,7 +157,7 @@ export const supportedPools = [
     icon: '🍘',
   },
   {
-    pid: 13,
+    pid: 14,
     lpAddresses: {
       42: '0xb21f5d46e1756cfeb34496636d38f97dc8552415',
       1: '0x2155128c06c4ee4b751c23d9403c07648afa5f5a',
@@ -172,7 +172,7 @@ export const supportedPools = [
     icon: '🍥',
   },
   {
-    pid: 14,
+    pid: 15,
     lpAddresses: {
       42: '0xb21f5d46e1756cfeb34496636d38f97dc8552415',
       1: '0x8306207b827d4b2b07fe4cfc191f5adced1c47f2',
@@ -187,7 +187,7 @@ export const supportedPools = [
     icon: '🥠',
   },
   {
-    pid: 15,
+    pid: 16,
     lpAddresses: {
       42: '0xb21f5d46e1756cfeb34496636d38f97dc8552415',
       1: '0xe839622b4c4bc8b9cda815f2e6a33b7d150ee529',
@@ -205,7 +205,7 @@ export const supportedPools = [
 
   // New ETH
   {
-    pid: 16,
+    pid: 17,
     lpAddresses: {
       42: '0xb21f5d46e1756cfeb34496636d38f97dc8552415',
       1: '0x359C138b1666aA2167AaFC205A841FF432A23040',
@@ -220,7 +220,7 @@ export const supportedPools = [
     icon: '🍝',
   },
   {
-    pid: 17,
+    pid: 18,
     lpAddresses: {
       42: '0xb21f5d46e1756cfeb34496636d38f97dc8552415',
       1: '0x8878Df9E1A7c87dcBf6d3999D997f262C05D8C70',
@@ -235,7 +235,7 @@ export const supportedPools = [
     icon: '🍜',
   },
   {
-    pid: 18,
+    pid: 19,
     lpAddresses: {
       42: '0xb21f5d46e1756cfeb34496636d38f97dc8552415',
       1: '0xf49C43Ae0fAf37217bDcB00DF478cF793eDd6687',
@@ -250,7 +250,7 @@ export const supportedPools = [
     icon: '🍲',
   },
   {
-    pid: 19,
+    pid: 20,
     lpAddresses: {
       42: '0xb21f5d46e1756cfeb34496636d38f97dc8552415',
       1: '0x8Bd1661Da98EBDd3BD080F0bE4e6d9bE8cE9858c',
@@ -265,7 +265,7 @@ export const supportedPools = [
     icon: '🍛',
   },
   {
-    pid: 20,
+    pid: 21,
     lpAddresses: {
       42: '0xb21f5d46e1756cfeb34496636d38f97dc8552415',
       1: '0x8973Be4402bf0a39448f419c2D64bD3591Dd2299',
@@ -420,7 +420,7 @@ export const supportedPools = [
   },
   // Burn
   {
-    pid: 21,
+    pid: 11,
     lpAddresses: {
       42: '0x0000000000000000000000000000000000000000',
       1: '0x4b618087DaE7765823BC47fFbF38C8Ee8489F5CA', // 0x00 actual

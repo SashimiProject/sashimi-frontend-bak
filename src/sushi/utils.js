@@ -86,6 +86,10 @@ export const getPoolWeight = async (masterChefContract, pid) => {
 }
 
 export const getEarned = async (masterChefContract, pid, account) => {
+  // Zero Contract
+  if (pid === 11) {
+    return new BigNumber(0);
+  }
   return masterChefContract.methods.pendingSashimi(pid, account).call()
 }
 
