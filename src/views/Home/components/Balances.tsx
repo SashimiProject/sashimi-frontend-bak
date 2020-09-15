@@ -119,7 +119,7 @@ const Balances: React.FC = () => {
 
       <Card>
         <CardContent>
-          <Label text="Total SASHIMI Supply" />
+          <Label text="Circulating SASHIMI Supply" />
           <Value
             value={totalSupply ? getBalanceNumber(totalSupply) : 'Locked'}
           />
