@@ -52,6 +52,7 @@ const StyledLogo = styled.img`
 `
 
 let burnPoolPercent: BigNumber = new BigNumber(0);
+const waitingPool = [22, 23, 24];
 
 const FarmCards: React.FC = () => {
   const [farms] = useFarms()
@@ -83,7 +84,7 @@ const FarmCards: React.FC = () => {
         return newFarmRows;
       }
 
-      const notETHTokenPair = [10, 12, 13, 14, 15, 16].includes(farm.pid);
+      const notETHTokenPair = [10, 12, 13, 14, 15, 16, 22, 23, 24].includes(farm.pid);
       // TODO: Better code to get weth value of tokenNotEth-tokenNotEth
       if (stakedValue[i] && !notETHTokenPair ) {
         ethValueInSashimiNoWeight = ethValueInSashimiNoWeight.plus(stakedValue[i].totalWethValue);
@@ -145,12 +146,6 @@ interface FarmCardProps {
 }
 
 const FarmCard: React.FC<FarmCardProps> = ({farm}) => {
-  const [startTime, setStartTime] = useState(0)
-  const [harvestable, setHarvestable] = useState(0)
-
-  const {account} = useWallet()
-  const {lpTokenAddress} = farm
-  const yam = useYam()
 
   const renderer = (countdownProps: CountdownRenderProps) => {
     const {hours, minutes, seconds} = countdownProps
@@ -164,26 +159,12 @@ const FarmCard: React.FC<FarmCardProps> = ({farm}) => {
     )
   }
 
-  useEffect(() => {
-    async function fetchEarned() {
-      if (yam) return
-      const earned = await getEarned(
-        getMasterChefContract(yam),
-        lpTokenAddress,
-        account,
-      )
-      setHarvestable(bnToDec(earned))
-    }
-
-    if (yam && account) {
-      fetchEarned()
-    }
-  }, [yam, lpTokenAddress, account, setHarvestable])
-
-  const poolActive = true // startTime * 1000 - Date.now() <= 0
+  let poolActive = true // startTime * 1000 - Date.now() <= 0
+  if (waitingPool.includes(farm.pid)) {
+    poolActive = 1600347600000 - Date.now() <= 0;
+  }
 
   let farmApy: any;
-  let farmPool: any;
   if (farm.apy && farm.apy.isNaN()) {
     farmApy = '- %';
   } else {
@@ -194,14 +175,6 @@ const FarmCard: React.FC<FarmCardProps> = ({farm}) => {
         .toLocaleString('en-US')
         .slice(0, -1) || '-'}%`
       : 'Loading ...';
-  }
-  if (farm.allocPoint && farm.totalAllocPoint
-    && !farm.allocPoint.isEqualTo(0)
-    && !farm.totalAllocPoint.isEqualTo(0) && !burnPoolPercent.isEqualTo(0)) {
-    const calibrationParam: BigNumber = (new BigNumber(1)).minus(burnPoolPercent);
-    farmPool = `${farm.allocPoint.times(100).div(calibrationParam).div(farm.totalAllocPoint).toFixed(2)}%`;
-  } else {
-    farmPool = '- %';
   }
 
   return (
@@ -214,7 +187,7 @@ const FarmCard: React.FC<FarmCardProps> = ({farm}) => {
             <StyledTitle>{farm.name}</StyledTitle>
             <StyledDetails>
               <StyledDetail>Deposit {farm.lpToken.toUpperCase()}</StyledDetail>
-              <StyledDetail>Earn {farm.earnToken.toUpperCase()} ({farmPool} Pool)</StyledDetail>
+              <StyledDetail>Earn {farm.earnToken.toUpperCase()}</StyledDetail>
             </StyledDetails>
             <Spacer/>
             <ButtonContainer>
@@ -229,7 +202,7 @@ const FarmCard: React.FC<FarmCardProps> = ({farm}) => {
                     {
                       poolActive ? 'Select' : (
                         <Countdown
-                          date={new Date(startTime * 1000)}
+                          date={new Date(1600347600000)}
                           renderer={renderer}
                         />
                       )
@@ -255,18 +228,6 @@ const FarmCard: React.FC<FarmCardProps> = ({farm}) => {
               <span>
                 {farmApy}
               </span>
-              {/* <span>
-                {farm.tokenAmount
-                  ? (farm.tokenAmount.toNumber() || 0).toLocaleString('en-US')
-                  : '-'}{' '}
-                {farm.tokenSymbol}
-              </span>
-              <span>
-                {farm.wethAmount
-                  ? (farm.wethAmount.toNumber() || 0).toLocaleString('en-US')
-                  : '-'}{' '}
-                ETH
-              </span> */}
             </StyledInsight>
           </StyledContent>
         </CardContent>

@@ -110,6 +110,55 @@ export const supportedPools = [
     tokenSymbol: 'SASHIMI',
     icon: '🍣',
   },
+
+  // 0917
+  {
+    pid: 22,
+    lpAddresses: {
+      42: '0xb21f5d46e1756cfeb34496636d38f97dc8552415',
+      1: '0xaf46c4cf1cb2a669ce2f7bc1e7a53f0da8c7c574',
+    },
+    tokenAddresses: {
+      42: '0xf2c73AF42FbAC096FE8F591899C5fc8bCB13884B',
+      1: '0xC28E27870558cF22ADD83540d2126da2e4b464c2',
+    },
+    name: 'HT love Sashimi!',
+    symbol: 'HT-SASHIMI UNI-V2 LP',
+    tokenSymbol: 'Huobi Token',
+    icon: '🥂',
+  },
+  {
+    pid: 23,
+    lpAddresses: {
+      42: '0xb21f5d46e1756cfeb34496636d38f97dc8552415',
+      1: '0x32893aF4A219dae132f721Ead8C351FEE91838Fc',
+    },
+    tokenAddresses: {
+      42: '0xf2c73AF42FbAC096FE8F591899C5fc8bCB13884B',
+      1: '0xC28E27870558cF22ADD83540d2126da2e4b464c2',
+    },
+    name: 'USDT love Sashimi!',
+    symbol: 'USDT-SASHIMI UNI-V2 LP',
+    tokenSymbol: 'USDT',
+    icon: '🍻',
+  },
+  {
+    pid: 24,
+    lpAddresses: {
+      42: '0xb21f5d46e1756cfeb34496636d38f97dc8552415',
+      1: '0xf09d4a52b25886cD4ca42D40fAe302a85f69e02D',
+    },
+    tokenAddresses: {
+      42: '0xf2c73AF42FbAC096FE8F591899C5fc8bCB13884B',
+      1: '0xC28E27870558cF22ADD83540d2126da2e4b464c2',
+    },
+    name: 'USDC love Sashimi!',
+    symbol: 'USDC-SASHIMI UNI-V2 LP',
+    tokenSymbol: 'USDC',
+    icon: '🍷',
+  },
+
+  // old
   {
     pid: 10,
     lpAddresses: {
@@ -122,7 +171,7 @@ export const supportedPools = [
     },
     name: 'elf love Sashimi!🧝🍱',
     symbol: 'SASHIMI-ELF UNI-V2 LP',
-    tokenSymbol: 'SASHIMI',
+    tokenSymbol: 'ELF',
     icon: '🍱',
   },
   // SASHIMI new
@@ -138,7 +187,7 @@ export const supportedPools = [
     },
     name: 'GT love Sashimi!',
     symbol: 'GT-SASHIMI UNI-V2 LP',
-    tokenSymbol: 'SASHIMI',
+    tokenSymbol: 'Gate Token',
     icon: '🍙',
   },
   {
@@ -153,7 +202,7 @@ export const supportedPools = [
     },
     name: 'LRC love Sashimi!',
     symbol: 'LRC-SASHIMI UNI-V2 LP',
-    tokenSymbol: 'SASHIMI',
+    tokenSymbol: 'LRC',
     icon: '🍘',
   },
   {
@@ -168,7 +217,7 @@ export const supportedPools = [
     },
     name: 'KNC love Sashimi!',
     symbol: 'KNC-SASHIMI UNI-V2 LP',
-    tokenSymbol: 'SASHIMI',
+    tokenSymbol: 'KNC',
     icon: '🍥',
   },
   {
@@ -183,7 +232,7 @@ export const supportedPools = [
     },
     name: 'REN love Sashimi!',
     symbol: 'REN-SASHIMI UNI-V2 LP',
-    tokenSymbol: 'SASHIMI',
+    tokenSymbol: 'REN',
     icon: '🥠',
   },
   {
@@ -198,7 +247,7 @@ export const supportedPools = [
     },
     name: 'YFII love Sashimi!',
     symbol: 'YFII-SASHIMI UNI-V2 LP',
-    tokenSymbol: 'SASHIMI',
+    tokenSymbol: 'YFII',
     icon: '🦪',
   },
   // SASHIMI End
