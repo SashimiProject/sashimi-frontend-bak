@@ -153,11 +153,15 @@ const FootnoteValue = styled.div`
 
 const StyledWrapper = styled.div`
   align-items: center;
+  width: 100%;
   display: flex;
   @media (max-width: 768px) {
     width: 100%;
     flex-flow: column nowrap;
     align-items: stretch;
+  }
+  @media (max-width: 768px) {
+    padding: 0 16px;
   }
 `
 
